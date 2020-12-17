@@ -1,38 +1,36 @@
 class Thread {
 
-    constructor(pointA,body2){
+    constructor(pointB,bodyA){
 
         var options = {
 
-            pointA: pointA,
-            bodyB: body2,
-            stiffness: 0.04,
-            length: 10
+            bodyA: bodyA,
+            pointB: pointB,
+            stiffness: 0.01,
+            length: 11
     
         }
     
         const Constraint = Matter.Constraint;
+
+        this.pointB = pointB;
 
         this.suspension = Constraint.create(options);
         World.add(world, this.suspension);  
 
     }
 
-    display(){     
+    display(){         
 
-        if (this.suspension.bodyB){
-
-            var pointA = this.suspension.pointA;
-            var pointB = this.suspension.bodyB.position;
+            var pointA = this.suspension.bodyA.position;
+            var pointB = this.pointB
 
             push();
 
             strokeWeight(10);
             line(pointA.x, pointA.y, pointB.x, pointB.y);
     
-            pop ();   
-
-    }
+            pop ();     
 
     }   
 
